@@ -2,7 +2,7 @@
 if( NOT GAUXC_PREFER_FETCHCONTENT_DEPS )
   find_package( ExchCXX QUIET )
   if( ExchCXX_FOUND )
-    message( STATUS "Found system ExchCXX" )
+    message( STATUS "Found system package for ExchCXX" )
     
     # Validate GPU compatibility for system package
     if( ${GAUXC_HAS_CUDA} AND NOT ${EXCHCXX_ENABLE_CUDA} )
