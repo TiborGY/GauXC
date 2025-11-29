@@ -53,6 +53,12 @@ cmake_dependent_option( GAUXC_ENABLE_CUTLASS
   "GAUXC_ENABLE_CUDA"             OFF 
 )
 
+# Dependency Management
+option( GAUXC_PREFER_FETCHCONTENT_DEPS
+  "Prefer CMake FetchContent over using system packages for ExchCXX and IntegratorXX"
+  ON
+)
+
 # Default the feature variables
 set( GAUXC_HAS_HOST       FALSE CACHE BOOL "" FORCE )
 set( GAUXC_HAS_CUDA       FALSE CACHE BOOL "" FORCE )
