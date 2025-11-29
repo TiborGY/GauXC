@@ -58,6 +58,26 @@ for flexible and agile development in the field of KS-DFT.
 * [HIP](https://rocmdocs.amd.com/en/latest/Programming_Guides/HIP-GUIDE.html)/[ROCm](https://github.com/RadeonOpenCompute/ROCm) (Required only if HIP enabled)
 * [MAGMA](https://icl.utk.edu/magma/) (Optional if CUDA/HIP enabled)
 
+# Dependency Management
+
+By default, GauXC uses CMake FetchContent to automatically download and some of its dependencies (ExchCXX and IntegratorXX). To use system-installed versions instead:
+
+```bash
+cmake -S . -B build \
+  -DGAUXC_PREFER_FETCHCONTENT_DEPS=OFF \
+  -DCMAKE_PREFIX_PATH="/path/to/exchcxx;/path/to/integratorxx"
+```
+
+## CMake Options for Dependency Management
+
+- `GAUXC_PREFER_FETCHCONTENT_DEPS` (default: `ON`): When `ON`, always use FetchContent. When `OFF`, search for system packages first.
+
+This option is particularly useful for:
+- **HPC environments**: Use pre-optimized installations from module systems
+- **Package managers**: Integrate with conda, spack, or system package managers
+- **Parent projects**: Allow projects like Psi4 to control the dependency chain
+- **CI optimization**: Skip rebuilding dependencies when using cached installations
+
 # Major Contributors
 
 See CONTRIBUTORS.md for a list of major contributors to GauXC.
